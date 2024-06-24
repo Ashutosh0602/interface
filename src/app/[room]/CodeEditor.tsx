@@ -17,7 +17,7 @@ const socket = io("http://localhost:8001");
 
 export default function CodeEditor() {
   const params = useParams();
-  const room = params?.room; // You can make this dynamic based on user input
+  const room = params?.room;
   const [code, setCode] = useState("");
 
   useEffect(() => {
@@ -62,8 +62,8 @@ export default function CodeEditor() {
         theme="vs-dark"
         onChange={handleEditorChange}
         options={{
-          minimap: { enabled: false }, // Disable minimap
-          fontSize: 14, // Adjust font size
+          minimap: { enabled: false },
+          fontSize: 14,
         }}
       />
     </div>
