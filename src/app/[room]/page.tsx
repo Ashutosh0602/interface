@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/resizable";
 import CodeEditor from "./CodeEditor";
 import RoomPage from "./Video";
+import Whiteboard from "./Whiteboard";
 
 const RoomID = () => {
   const params = useParams();
@@ -30,7 +31,9 @@ const RoomID = () => {
               <CodeEditor />
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel defaultSize={50}></ResizablePanel>
+            <ResizablePanel defaultSize={50}>
+              <Whiteboard />
+            </ResizablePanel>
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
