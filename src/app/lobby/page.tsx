@@ -6,7 +6,7 @@ import MatrixRain from "./MatrixRain";
 import { useState, useEffect } from "react";
 import Room from "./room";
 
-export default function page() {
+export default function Page() {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [isOpen, setIsOpen] = useState(false);
