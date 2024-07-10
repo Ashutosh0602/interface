@@ -32,7 +32,7 @@ export default function CodeEditor() {
     };
   }, []);
 
-  const handleEditorChange = (value, event) => {
+  const handleEditorChange = (value: any, event: any) => {
     setCode(value);
     // Emit code changes to the server
     socket.emit("codeChange", value);

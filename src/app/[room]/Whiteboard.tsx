@@ -4,8 +4,8 @@ import io from "socket.io-client";
 const socket = io("http://localhost:4000");
 
 const Whiteboard = () => {
-  const canvasRef = useRef(null);
-  const contextRef = useRef(null);
+  const canvasRef: any = useRef(null);
+  const contextRef: any = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [tool, setTool] = useState("pen");
   const [color, setColor] = useState("black");
@@ -15,7 +15,7 @@ const Whiteboard = () => {
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas: any = canvasRef.current;
     canvas.width = window.innerWidth * 2;
     canvas.height = window.innerHeight * 2;
     canvas.style.width = `${window.innerWidth}px`;
@@ -59,7 +59,7 @@ const Whiteboard = () => {
     };
   }, [color, tool]);
 
-  const startDrawing = ({ nativeEvent }) => {
+  const startDrawing = ({ nativeEvent }: any) => {
     if (tool === "text") return;
     const { offsetX, offsetY } = nativeEvent;
     if (tool === "shape") {
@@ -71,7 +71,7 @@ const Whiteboard = () => {
     setIsDrawing(true);
   };
 
-  const finishDrawing = ({ nativeEvent }) => {
+  const finishDrawing = ({ nativeEvent }: any) => {
     if (tool === "text") return;
     setIsDrawing(false);
     if (tool === "shape") {
@@ -98,7 +98,7 @@ const Whiteboard = () => {
     contextRef.current.closePath();
   };
 
-  const draw = ({ nativeEvent }) => {
+  const draw = ({ nativeEvent }: any) => {
     if (!isDrawing || tool === "text" || tool === "shape") return;
     const { offsetX, offsetY } = nativeEvent;
     const { offsetX: prevX, offsetY: prevY } = contextRef.current.__lastPos || {
@@ -118,7 +118,7 @@ const Whiteboard = () => {
     contextRef.current.__lastPos = { offsetX, offsetY };
   };
 
-  const handleToolChange = (newTool) => {
+  const handleToolChange = (newTool: any) => {
     setTool(newTool);
     if (newTool === "eraser") {
       contextRef.current.globalCompositeOperation = "destination-out";
@@ -129,7 +129,7 @@ const Whiteboard = () => {
     }
   };
 
-  const handleCanvasClick = (event) => {
+  const handleCanvasClick = (event: any) => {
     if (tool !== "text" && tool !== "shape") return;
     const { offsetX, offsetY } = event.nativeEvent;
     setInputPosition({ x: offsetX, y: offsetY });
@@ -137,7 +137,7 @@ const Whiteboard = () => {
     setInputValue("");
   };
 
-  const handleTextSubmit = (e) => {
+  const handleTextSubmit = (e: any) => {
     e.preventDefault();
     const { x, y } = inputPosition;
     const text = inputValue;
@@ -146,13 +146,27 @@ const Whiteboard = () => {
     setInputVisible(false);
   };
 
-  const drawText = (context, text, x, y, color) => {
+  const drawText = (
+    context: any,
+    text: any,
+    x: number,
+    y: number,
+    color: string
+  ) => {
     context.font = "20px Arial";
     context.fillStyle = color;
     context.fillText(text, x, y);
   };
 
-  const drawShape = (context, shape, startX, startY, endX, endY, color) => {
+  const drawShape = (
+    context: any,
+    shape: any,
+    startX: number,
+    startY: number,
+    endX: number,
+    endY: number,
+    color: string
+  ) => {
     context.strokeStyle = color;
     context.lineWidth = 2;
     switch (shape) {

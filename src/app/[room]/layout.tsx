@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default function layout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
