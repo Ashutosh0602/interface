@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 import Room from "./room";
 
 export default function page() {
-  const [isConnected, setIsConnected] = React.useState(false);
-  const [transport, setTransport] = React.useState("N/A");
+  const [isConnected, setIsConnected] = useState(false);
+  const [transport, setTransport] = useState("N/A");
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
